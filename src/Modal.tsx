@@ -2,12 +2,11 @@ import React from "react";
 
 interface ModalProps {
   isOpen: boolean;
-  onClose: () => void;
   title: string;
   message: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, title, message }) => {
   if (!isOpen) return null; // Do not render the modal if it's not open
 
   return (
