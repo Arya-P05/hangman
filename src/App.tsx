@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
+import { ReactNode } from "react";
+
 import words from "./wordList.json";
 import { HangmanFigure } from "./HangmanFigure";
 import { HangmanWord } from "./HangmanWord";
@@ -13,7 +15,7 @@ function App() {
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
-  const [modalMessage, setModalMessage] = useState("");
+  const [modalMessage, setModalMessage] = useState<ReactNode>("");
 
   const incorrectLetters = guessedLetters.filter(
     (letter) => !word.includes(letter)
@@ -34,9 +36,14 @@ function App() {
       setModalMessage("You won! - Refresh to try again.");
       setIsModalOpen(true);
     } else if (lostGame) {
+      const correctWord = word.toUpperCase();
       setModalTitle("Game Over!");
       setModalMessage(
-        `Nice try - The correct word was: ${word.toUpperCase()}. \n Refresh to try again.`
+        <>
+          Nice try - The correct word was: <strong>{correctWord}</strong>.{" "}
+          <br />
+          Refresh to try again.
+        </>
       );
       setIsModalOpen(true);
     }

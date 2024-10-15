@@ -1,9 +1,10 @@
 import React from "react";
+import { ReactNode } from "react";
 
 interface ModalProps {
   isOpen: boolean;
   title: string;
-  message: string;
+  message: ReactNode;
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, title, message }) => {
@@ -39,11 +40,12 @@ const overlayStyles: React.CSSProperties = {
 };
 
 const modalStyles: React.CSSProperties = {
+  fontFamily: "monospace",
   background: "white",
   borderRadius: "8px",
   padding: "20px",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-  width: "300px",
+  width: "400px",
   textAlign: "center",
   position: "relative",
 };
