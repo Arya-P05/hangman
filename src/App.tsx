@@ -116,7 +116,7 @@ function App() {
 
 export default App;
 
-// track the letters pressed
+// track the letters being pressed
 // both correct and wrong
 // add body part per wrong letter
 // know correct word to make sure to show correct letters pressed
